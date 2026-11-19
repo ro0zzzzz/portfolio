@@ -237,23 +237,28 @@ if (fine && !reduce) {
   const wrap = $("#collab"), fr = $("#collabFrame"), pill = $("#collabLink");
   pill.textContent = CONTENT.collabLabel;
   const skip = !fine || reduce || innerWidth < 760;
-  let slow = false; try { slow = localStorage.getItem("collab-slow") === "1"; } catch (_) {}
-  if (skip || slow) return;
+  const q = new URLSearchParams(location.search).get("3d");      // ?3d=1 forces the 3D button, ?3d=0 turns it off
+  try { localStorage.removeItem("collab-slow"); } catch (_) {}   // clear the old permanent flag from the first version
+  let slow = false; try { slow = sessionStorage.getItem("collab-slow") === "1"; } catch (_) {}
+  if (q === "1") slow = false;
+  if (skip || slow || q === "0") return;
   const send = m => fr.contentWindow && fr.contentWindow.postMessage(Object.assign({ venom: "ptr" }, m), "*");
   const rel = e => { const b = fr.getBoundingClientRect(); return { x: e.clientX - b.left, y: e.clientY - b.top, pt: e.pointerType || "mouse" }; };
-  const fallback = () => { wrap.classList.remove("live"); pill.removeAttribute("style"); fr.remove(); try { localStorage.setItem("collab-slow", "1"); } catch (_) {} };
+  const fallback = () => { wrap.classList.remove("live"); pill.removeAttribute("style"); fr.remove(); try { sessionStorage.setItem("collab-slow", "1"); } catch (_) {} };
   function speedTest() {
-    const t = []; let last = performance.now();
-    (function f(now) {
-      t.push(now - last); last = now;
-      if (t.length < 6) return requestAnimationFrame(f);
-      const s = t.slice(1).sort((a, b) => a - b), med = s[Math.floor(s.length / 2)];
-      if (med > 20) fallback();                                // under about 50 fps: use the light CSS pill
-    })(last);
+    setTimeout(() => {                                          // let the shaders warm up first
+      const t = []; let last = performance.now();
+      (function f(now) {
+        t.push(now - last); last = now;
+        if (t.length < 40) return requestAnimationFrame(f);
+        const m = t.slice(1).sort((a, b) => a - b), med = m[Math.floor(m.length / 2)];
+        if (med > 34) fallback();                               // under about 30 fps: use the light CSS pill
+      })(last);
+    }, 2500);
   }
   const start = () => {
     fr.hidden = false; fr.src = "collab/venom.html?label=" + encodeURIComponent(CONTENT.collabLabel);
-    const bail = setTimeout(() => fr.remove(), 8000);          // never loaded: keep the CSS pill
+    const bail = setTimeout(() => fr.remove(), 15000);          // never loaded: keep the CSS pill
     addEventListener("message", e => {
       if (e.source !== fr.contentWindow || !e.data || !e.data.venom) return;
       const d = e.data;
