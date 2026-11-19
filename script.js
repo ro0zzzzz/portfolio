@@ -147,7 +147,7 @@ if (fine && !reduce) {
   function size() {
     const r = box.getBoundingClientRect(), cs = getComputedStyle(card);
     cw = parseFloat(cs.width); ch = parseFloat(cs.height);
-    seg = innerWidth < 900 ? 17 : 26; ax = r.width * .5;
+    seg = innerWidth < 900 ? 13 : 26; ax = r.width * .5;
   }
   function init() {
     size();
@@ -172,7 +172,7 @@ if (fine && !reduce) {
     }
   }
   function draw() {
-    const L = pts[N], P = pts[N - 1], ang = -Math.atan2(L.x - P.x, L.y - P.y);
+    const L = pts[N], P = pts[N - 4], ang = -Math.atan2(L.x - P.x, L.y - P.y);   // angle of the last few segments: steadier than one segment
     card.style.transformOrigin = "50% 0";
     card.style.transform = `translate(${L.x - cw / 2}px,${L.y}px) rotate(${ang}rad)`;
     let c = "", left = [], right = [];
@@ -202,7 +202,9 @@ if (fine && !reduce) {
     if (d > max) { L.x = ax + dx * max / d; L.y = dy * max / d; }
   });
   const up = () => {
-    if (!drag) return; drag = null; const L = pts[N]; L.px = L.x - (L.x - L.px) * .45; L.py = L.y - (L.y - L.py) * .45; go();
+    if (!drag) return; drag = null;
+    pts.forEach((p, i) => { if (i) { p.px = p.x - (p.x - p.px) * .35; p.py = p.y - (p.y - p.py) * .35; } });   // calm the throw so it never whips off-screen
+    go();
   };
   card.addEventListener("pointerup", up); card.addEventListener("pointercancel", up);
   addEventListener("resize", () => { size(); if (reduce) init(); });
@@ -227,6 +229,7 @@ if (fine && !reduce) {
   f.addEventListener("pointerdown", e => { pressed = true; set(e); tr = radius(); go(); });
   addEventListener("pointerup", () => { if (pressed) { pressed = false; tr = radius(); go(); } });
   f.addEventListener("pointerleave", () => { pressed = false; tr = 0; go(); });
+  f.addEventListener("pointercancel", () => { pressed = false; tr = 0; go(); });
 })();
 
 /* ===== 3D goo button (Venom Button by exteestudio, MIT) with CSS fallback ===== */
