@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nahidul Islam Rahan — Digital Marketer &amp; Video Editor</title>
+<meta name="description" content="Nahidul Islam Rahan: Meta and Google Ads, SEO, video editing, motion and graphic design that turn attention into customers.">
+<meta name="theme-color" content="#f3efe6">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<!-- 3D goo button: Venom Button by exteestudio (MIT). See collab/LICENSE -->
+</head>
+<body>
+
+<div id="loader" aria-hidden="true"><span class="rec">● REC</span> <span id="loaderTime">00:00:00:00</span></div>
+<div id="progress" aria-hidden="true"></div>
+<div id="cursor" aria-hidden="true"><i class="halo"></i><i class="ring"></i><i class="dot"></i></div>
+
+<header id="nav">
+  <a class="nav-name" href="#top">nahidul islam rahan</a>
+  <nav aria-label="Main">
+    <a href="#work">Work</a>
+    <a href="#process">Process</a>
+    <a href="#about">About</a>
+    <a class="nav-cta" href="#contact">Let’s talk</a>
+  </nav>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="hero-text">
+      <p class="badge"><i></i> Available for new projects</p>
+      <h1 class="split" aria-label="Nahidul Islam Rahan">
+        <span class="line" data-split>Nahidul</span>
+        <span class="line" data-split>Islam</span>
+        <span class="line" data-split>Rahan</span>
+      </h1>
+      <p class="tagline" id="tagline"></p>
+      <div class="hero-actions">
+        <a class="btn btn-dark" href="#work">See my work</a>
+        <a class="btn btn-line" id="startProject" href="#contact">Start a project</a>
+      </div>
+      <ul class="tools" id="tools" aria-label="Tools"></ul>
+    </div>
+
+    <div class="lanyard" id="lanyard">
+      <svg id="strap" aria-hidden="true">
+        <path id="strapPath" fill="none"/>
+        <path id="strapShape" class="strap-shape"/>
+        <text class="strap-text"><textPath id="strapText" href="#strapPath" startOffset="0"></textPath></text>
+      </svg>
+      <div class="idcard" id="idcard">
+        <div class="clip"><span></span></div>
+        <div class="id-top"><b>CREW PASS</b><b class="rec">● REC</b></div>
+        <div class="id-photo"><img src="assets/me-front.webp" alt="Nahidul Islam Rahan" width="500" height="500" draggable="false"><i class="c tl"></i><i class="c tr"></i><i class="c bl"></i><i class="c br"></i></div>
+        <p class="id-role" id="idRole"></p>
+        <p class="id-name">Nahidul<br>Islam Rahan</p>
+        <div class="id-foot"><span id="idMeta"></span><i class="barcode"></i></div>
+      </div>
+      <p class="grab">GRAB THE CARD ↑</p>
+    </div>
+  </section>
+
+  <div class="strip" aria-hidden="true"><div class="strip-track" id="strip"></div></div>
+
+  <section class="sec" id="work">
+    <header class="sec-head">
+      <p class="label">01 — Selected work</p>
+      <h2 class="split"><span data-split>Work that sells.</span></h2>
+    </header>
+    <div class="rail-wrap" id="longWrap">
+      <div class="rail-bar"><h3>Long-form</h3><div class="arrows"><button type="button" data-rail="longRail" data-dir="-1" aria-label="Previous">←</button><button type="button" data-rail="longRail" data-dir="1" aria-label="Next">→</button></div></div>
+      <div class="rail long" id="longRail"></div>
+    </div>
+    <div class="rail-wrap" id="shortWrap" hidden>
+      <div class="rail-bar"><h3>Shorts &amp; Reels</h3><div class="arrows"><button type="button" data-rail="shortRail" data-dir="-1" aria-label="Previous">←</button><button type="button" data-rail="shortRail" data-dir="1" aria-label="Next">→</button></div></div>
+      <div class="rail short" id="shortRail"></div>
+    </div>
+    <a class="btn btn-line more" id="moreWork" href="#" target="_blank" rel="noopener" hidden>See more work</a>
+  </section>
+
+  <section class="sec" id="process">
+    <header class="sec-head">
+      <p class="label">02 — Process</p>
+      <h2 class="split"><span data-split>How a campaign</span> <span data-split>comes together.</span></h2>
+    </header>
+    <div class="timeline-stage">
+      <div class="timeline" id="timeline" aria-hidden="true">
+        <div class="tl-ruler"></div>
+        <div class="tl-row"><b>V2</b><i style="--l:8%;--w:22%"></i><i style="--l:44%;--w:30%"></i></div>
+        <div class="tl-row"><b>V1</b><i style="--l:0%;--w:34%"></i><i style="--l:36%;--w:26%"></i><i style="--l:64%;--w:34%"></i></div>
+        <div class="tl-row a"><b>A1</b><i style="--l:0%;--w:58%"></i><i style="--l:60%;--w:38%"></i></div>
+        <div class="tl-row a"><b>A2</b><i style="--l:14%;--w:40%"></i><i style="--l:70%;--w:20%"></i></div>
+        <div class="playhead" id="playhead"></div>
+      </div>
+    </div>
+    <ol class="steps" id="steps"></ol>
+  </section>
+
+  <section class="sec about" id="about">
+    <div class="reveal-col">
+      <div class="reveal" id="reveal">
+        <img class="base" src="assets/me-side.webp" alt="Nahidul looking at the sunrise from a hill" width="1100" height="1100" loading="lazy" draggable="false">
+        <img class="top" src="assets/me-mask.webp" alt="" width="1100" height="1100" loading="lazy" draggable="false">
+        <i class="lens-ring"></i>
+      </div>
+      <p class="grab">HOVER THE PHOTO</p>
+    </div>
+    <div class="about-text">
+      <p class="label">03 — About</p>
+      <h2 class="split"><span data-split>I build ads</span> <span data-split>around attention.</span></h2>
+      <p>I’m Nahidul Islam Rahan. I run Meta ads, edit videos and design creatives that people actually stop for.</p>
+      <p>Every project starts with one question: what should this make someone do?</p>
+      <ul class="pills"><li>Meta Ads</li><li>Video Editing</li><li>Creative Design</li></ul>
+    </div>
+  </section>
+
+  <section class="sec" id="contact">
+    <div class="contact-card">
+      <p class="label">04 — Contact</p>
+      <h2 class="split"><span data-split>Let’s make something</span> <span data-split>worth clicking.</span></h2>
+      <div class="rows">
+        <div class="row"><span>Email</span><a id="emailLink" href="#"></a><button type="button" id="copyEmail">Copy</button></div>
+        <div class="row"><span>WhatsApp</span><a id="waLink" href="#" target="_blank" rel="noopener"></a></div>
+      </div>
+      <ul class="socials" id="socials"></ul>
+    </div>
+    <footer class="foot"><span id="year"></span> Nahidul Islam Rahan. Goo button by exteestudio (MIT).</footer>
+  </section>
+
+</main>
+
+<!-- Floating 3D goo button: CSS pill first, WebGL iframe loads later -->
+<div id="collab" aria-label="Let’s collab on WhatsApp">
+  <iframe id="collabFrame" title="" aria-hidden="true" tabindex="-1" hidden></iframe>
+  <a id="collabLink" class="collab-pill" href="#" target="_blank" rel="noopener">let’s collab</a>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
