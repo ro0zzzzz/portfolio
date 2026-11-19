@@ -1,4 +1,5 @@
 <!doctype html>
+<!-- Venom Button by exteestudio (MIT, see LICENSE). Modified: Forest Green face and Oat Milk label to match the site palette. -->
 <!-- Based on Venom Button by exteestudio (MIT, see LICENSE in this folder).
      Adapted for a portfolio site: transparent background, "let's collab" label, pointer input from the parent page. -->
 <html lang="en">
@@ -652,13 +653,13 @@ vec3 shadeLabel(vec2 lu, float sh, float ao) {
   float my = textureLod(uLabel, lu + vec2(0.0, tx.y), uLabelLod).a - textureLod(uLabel, lu - vec2(0.0, tx.y), uLabelLod).a;
   vec3 N = normalize(vec3(-mx * 1.1, -my * 1.1, 1.0));
   vec3 R = reflect(vec3(0.0, 0.0, -1.0), N);
-  vec3 silver = vec3(0.9, 0.91, 0.94);
+  vec3 silver = vec3(0.95, 0.91, 0.82);
   // polished silver: the classic chrome profile across the letter height (bright sky on top, a darker
   // horizon band through the middle, a lighter floor bounce at the bottom)
   float t = clamp((lu.y - 0.32) / 0.36, 0.0, 1.0);
   float grad = t < 0.48 ? mix(1.12, 0.74, smoothstep(0.0, 0.48, t))
                         : mix(0.6, 0.95, smoothstep(0.5, 1.0, t));
-  vec3 col = silver * grad * (0.82 + 0.18 * sh);
+  vec3 col = silver * grad * (0.82 + 0.18 * sh) * 1.45;
   col += env(R) * silver * 0.3;                                              // bevels pick up the room
   // stamped edge: a crisp lit rim on the side facing the key light, a darker one opposite
   float edge = clamp(length(vec2(mx, my)) * 1.6, 0.0, 1.0);
@@ -724,7 +725,7 @@ vec3 shadeGoo(vec2 p, vec4 g) {
              + vec3(0.95, 0.9, 0.84) * pow(max(dot(R, cRoom), 0.0), 10.0) * F * 0.9;
   spec = mix(spec, rough, matte);
 
-  vec3 diff = vec3(0.0007) * (1.8 * max(dot(N, KEY), 0.0) * sh + 0.9 * ao);
+  vec3 diff = vec3(0.0052, 0.0300, 0.0157) * (1.8 * max(dot(N, KEY), 0.0) * sh + 0.9 * ao);
   vec3 col = diff + spec;
 
   // the living-room window as a flat, planar reflection on the face (top left): it only bends where the
